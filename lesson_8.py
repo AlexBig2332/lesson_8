@@ -9,7 +9,7 @@ def show_time(f):
         start = time.time()
         f(*args, **kwargs)
         finish = time.time()
-        print("Создание списка {} заняло {} секунд".format(f, finish-start))
+        print("Создание списка {} заняло {:.5} секунд".format(f, finish - start))
     return wrapper
 
 @show_time
