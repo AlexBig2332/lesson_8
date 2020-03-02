@@ -1,7 +1,3 @@
-# 1. Написать декоратор, замеряющий время выполнение декорируемой функции.
-# 2. Сравнить время создания генератора и списка с элементами: натуральные числа от 1 до 1000000
-#    (создание объектов оформить в виде функций).
-
 import time
 import os
 import psutil
@@ -12,14 +8,12 @@ def show_time(f):
         print('Исп. память до вып. функции:' + str(proc.memory_info().rss / 1000000))
         start = time.time()
         f(*args, **kwargs)
-        # print(f(*args, **kwargs))
         print('Исп. память после вып. функции:' + str(proc.memory_info().rss / 1000000))
         stop = time.time()
         print("Выполнение {} заняло {:.5} секунд".format(f, stop - start))
         print()
     return wrapper
 
-N = 1000000
 @show_time
 def list_create_gen(N):
     for i in range(N):
@@ -37,7 +31,7 @@ def list_create(N): # Создание списка в цикле
         list.append(i+1)
     return list
 
-
+N = 1000000
 list_create_gen(N)
 list_create_gen_sequence(N)
 list_create(N)
